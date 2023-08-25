@@ -62,7 +62,7 @@ export default {
       console.log(this.dataStore.currentCityWeatherData.currently);
       if (this.dataStore.currentCityWeatherData.currently.temperature > 20) {
         for (let entry of this.dataStore.weatherQuips.collection.hot) {
-          this.dataStore.weatherQuips.current.push(entry);
+          this.dataStore.weatherQuips.currentArray.push(entry);
         }
       }
       if (this.dataStore.currentCityWeatherData.currently.temperature < 20) {
