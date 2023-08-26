@@ -1,10 +1,10 @@
 <template>
   <div class="about">
-    <input type="text" v-model="this.dataStore.currentCity" />
+    <input type="text" v-model.trim="this.dataStore.currentCity" />
     <button
       @click="
         this.dataStore.fetchLocationData(this.dataStore.currentCity),
-          toggleCitylSelected()
+          toggleCitySelected()
       "
     >
       Search for City
@@ -43,7 +43,7 @@ export default {
     };
   },
   methods: {
-    toggleCitylSelected() {
+    toggleCitySelected() {
       this.dataStore.citySelected = false;
     },
     async selectCity(city) {
@@ -56,6 +56,8 @@ export default {
       this.filterQuips();
       console.log("test");
       this.dataStore.citySelected = true;
+      this.dataStore.currentCity = "";
+      this.dataStore.currentGeoData = {};
     },
     filterQuips() {
       console.log("testQuips");

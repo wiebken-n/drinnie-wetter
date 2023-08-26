@@ -58,7 +58,7 @@ export const useDataStore = defineStore("state", {
     },
     fetchWeatherData(currentCityLat, currentCityLon) {
       return fetch(
-        `https://api.pirateweather.net/forecast/${process.env.VUE_APP_API_KEY_WEATHER}/${currentCityLat},${currentCityLon}?exclude=minutely&units=si`,
+        `https://api.pirateweather.net/forecast/${process.env.VUE_APP_API_KEY_WEATHER}/${currentCityLat},${currentCityLon}?exclude=minutely,hourly,daily,alerts&units=si`,
         {
           method: "GET",
           contentType: "application/json",
