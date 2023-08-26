@@ -4,7 +4,7 @@ import WeatherView from "@/views/WeatherView.vue";
 
 const routes = [
   {
-    path: "/",
+    path: "/home",
     name: "home",
     component: HomeView,
   },
@@ -18,7 +18,7 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
   {
-    path: "/weather",
+    path: "/",
     name: "weather",
     component: WeatherView,
   },

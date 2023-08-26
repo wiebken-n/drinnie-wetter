@@ -1,0 +1,47 @@
+:root {
+  --clr-font: rgb(43, 43, 43);
+  --clr-background: rgb(238, 238, 238);
+  --clr-background-accent: rgb(206, 206, 206);
+  --clr-btn: rgb(97, 97, 97);
+  --clr-btn-hover: rgb(66, 66, 66);
+  --clr-btn-active: rgb(24, 24, 24);
+  --clr-btn-font: white;
+  --clr-search-results: rgb(43, 43, 43);
+  --clr-search-results-background: rgb(223, 223, 223);
+  --clr-search-results-border: rgb(201, 201, 201);
+  --border-radius: 5px;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+::selection {
+  background-color: black;
+  color: white;
+}
+
+html,
+body {
+  background-color: var(--clr-background);
+  color: var(--clr-font);
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  min-height: 100dvh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  font-size: 1rem;
+  color: var(--clr-btn-font);
+  border-radius: var(--border-radius);
+  background-color: var(--clr-btn);
+  border: none;
+  padding: 0.5rem 1rem;
+}

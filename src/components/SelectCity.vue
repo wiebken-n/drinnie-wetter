@@ -1,25 +1,43 @@
 <template>
-  <div class="about">
-    <input type="text" v-model.trim="this.dataStore.currentCity" />
-    <button
-      @click="
-        this.dataStore.fetchLocationData(this.dataStore.currentCity),
-          toggleCitySelected()
-      "
-    >
-      Search for City
-    </button>
-  </div>
-  <div v-for="city in this.dataStore.currentGeoData" :key="city.latitude">
-    <div v-if="this.dataStore.citySelected === false">
-      {{ city.name }}
-      {{ city.country }}
-      {{ city.state }}
-      <button @click="this.selectCity(city)">Select this City</button>
+  <div class="input__wrapper">
+    <div class="search-city__wrapper">
+      <input
+        type="text"
+        placeholder="Gib einen Ortsnamen ein"
+        v-model.trim="this.dataStore.currentCity"
+        id="search-city__input"
+      />
+      <button
+        class="search-city__btn"
+        for="search-city__input"
+        @click="searchForCity()"
+      >
+        <img
+          class="search-icon"
+          src="@/assets/icons/search.svg"
+          alt="a magnifying-glass"
+        />
+      </button>
     </div>
+  </div>
 
-    <!-- {{ city.latitude }}
+  <div class="city-results__wrapper">
+    <div
+      class="city-results__container"
+      v-for="city in this.dataStore.currentGeoData"
+      :key="city.latitude"
+    >
+      <div class="city-result" v-if="this.dataStore.citySelected === false">
+        <h3 class="city__data"></h3>
+
+        <button class="select-city__button" @click="this.selectCity(city)">
+          {{ city.name }} - {{ city.country }} {{ city.state }}
+        </button>
+      </div>
+
+      <!-- {{ city.latitude }}
     {{ city.longitude }} -->
+    </div>
   </div>
 </template>
 
@@ -42,7 +60,14 @@ export default {
       randomQuip: "",
     };
   },
+
   methods: {
+    searchForCity() {
+      if (this.dataStore.currentCity !== "") {
+        this.dataStore.fetchLocationData(this.dataStore.currentCity);
+        this.toggleCitySelected();
+      }
+    },
     toggleCitySelected() {
       this.dataStore.citySelected = false;
     },
@@ -94,3 +119,72 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+body {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.input__wrapper {
+  width: 80%;
+  margin: auto;
+}
+
+.search-city__wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.1rem;
+}
+
+#search-city__input {
+  height: 2.125rem;
+  padding-inline: 0.5rem;
+  border-radius: var(--border-radius);
+  flex-grow: 1;
+}
+.search-city__btn {
+  width: 3rem;
+  height: 2.125rem;
+}
+.search-icon {
+  filter: invert(1);
+}
+.city-results__wrapper {
+  background: transparent;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.city-results__container {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+}
+.city-result {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 80%;
+  transition: all 100ms ease;
+}
+.city__data {
+  font-size: 1rem;
+}
+.select-city__button {
+  text-align: left;
+  font-size: 0.9rem;
+  width: 100%;
+  background-color: var(--clr-search-results-background);
+  color: var(--clr-search-results);
+  border-radius: 3px;
+  border: 1px solid var(--clr-search-results-border);
+  box-shadow: 0 0 5px 0 var(--clr-search-results-border);
+}
+</style>
