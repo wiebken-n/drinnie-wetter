@@ -19,8 +19,9 @@ export const useDataStore = defineStore("state", {
             "Eindeutig zu sonnig zum rausgehen.",
           ],
           rainy: [
-            "rainy mc rainface",
-            "Wenn man auf outdoor-duschen steht spricht nichts dagegen rauszugehen.",
+            "Jep, schon wieder Regen",
+            "Oh, du hast einen Regenschirm dabei? Das wird dir viel helfen, wenn der Wind dich wegweht. ",
+            "Wenn man auf outdoor-duschen steht, spricht nichts dagegen rauszugehen.",
           ],
           cold: ["Viel zu kalt zum rausgehen.", "kaaalt"],
           hot: [

@@ -128,6 +128,7 @@ body {
 }
 
 .input__wrapper {
+  padding-top: 1rem;
   width: 80%;
   margin: auto;
 }
@@ -155,6 +156,7 @@ body {
 }
 .city-results__wrapper {
   background: transparent;
+  z-index: 1;
   position: absolute;
   width: 100%;
   display: flex;

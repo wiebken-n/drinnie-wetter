@@ -1,7 +1,9 @@
 <template>
   <app-header-vue />
   <select-city-vue />
-  <show-weather-vue />
+  <div class="wrapper">
+    <show-weather-vue />
+  </div>
 </template>
 
 <script>
@@ -18,3 +20,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.wrapper {
+  max-width: 800px;
+  margin: auto;
+  position: relative;
+}
+</style>

@@ -1,8 +1,8 @@
 <template>
   <div class="show-weather__wrapper">
     <div v-if="this.dataStore.currentCityWeatherData.timezone">
-      <div>
-        <h2>{{ this.dataStore.currentCityGeoData.name }}</h2>
+      <div class="weather-data__container">
+        <!-- <h2>{{ this.dataStore.currentCityGeoData.name }}</h2> -->
         <img
           class="current-weather__icon"
           :src="
@@ -11,17 +11,17 @@
               '.svg')
           "
         />
-        <h2>{{ roundTemperature }}°C</h2>
-        <small>{{ roundTemperature }}</small>
-        <h2>{{ this.dataStore.currentCityWeatherData.currently.summary }}</h2>
-        <h2>
-          Regenwahrscheinlichkeit:
-          {{ convertPrecipationProbabilityToPercent }}
-        </h2>
-        <h2>
-          {{ this.dataStore.weatherQuips.currentQuip }}
-        </h2>
+        <div class="temp-rain__wrapper">
+          <h2 class="temperature">{{ roundTemperature }}°C</h2>
+          <h2 class="rain">
+            {{ convertPrecipationProbabilityToPercent }} Regen
+          </h2>
+        </div>
       </div>
+      <p class="quip-text">
+        {{ this.dataStore.weatherQuips.currentQuip }}
+      </p>
+
       <div>
         <!-- {{ this.dataStore.currentCityWeatherData }} -->
       </div>
@@ -58,10 +58,35 @@ export default {
 
 <style scoped>
 .show-weather__wrapper {
+  padding-top: 15%;
   display: flex;
   flex-direction: column;
 }
+.weather-data__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+  justify-content: space-evenly;
+}
 .current-weather__icon {
-  width: 3rem;
+  width: 5.75rem;
+  height: 6rem;
+}
+.temperature {
+  font-size: 2rem;
+}
+.rain {
+  font-size: 1.25rem;
+}
+.quip-text {
+  font-variant-caps: all-petite-caps;
+  font-weight: 500;
+  padding-top: 2.5rem;
+  margin: auto;
+  text-align: center;
+  width: 80%;
+  font-size: 2.125rem;
 }
 </style>
