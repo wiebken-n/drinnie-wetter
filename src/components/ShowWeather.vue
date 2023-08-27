@@ -1,5 +1,8 @@
 <template>
-  <div class="show-weather__wrapper">
+  <div
+    class="show-weather__wrapper"
+    @click="this.dataStore.setCitySelectedToTrue()"
+  >
     <div v-if="this.dataStore.currentCityWeatherData.timezone">
       <div class="weather-data__container">
         <!-- <h2>{{ this.dataStore.currentCityGeoData.name }}</h2> -->
@@ -73,7 +76,9 @@ export default {
 .current-weather__icon {
   width: 5.75rem;
   height: 6rem;
+  filter: var(--clr-svg);
 }
+
 .temperature {
   font-size: 2rem;
 }

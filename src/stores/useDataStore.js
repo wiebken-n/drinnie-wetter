@@ -9,7 +9,6 @@ export const useDataStore = defineStore("state", {
       currentCityLat: "",
       currentCityLon: "",
       currentCityWeatherData: {},
-      citySelectionActive: false,
       citySelected: false,
       weatherQuips: {
         currentQuip: "",
@@ -83,6 +82,9 @@ export const useDataStore = defineStore("state", {
       this.currentCityLat = this.currentCityGeoData.latitude;
       this.currentCityLon = this.currentCityGeoData.longitude;
       console.log(this.currentCityGeoData);
+    },
+    setCitySelectedToTrue() {
+      this.citySelected = true;
     },
   },
 });

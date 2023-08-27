@@ -1,5 +1,24 @@
 :root {
-  --clr-font: rgb(43, 43, 43);
+  --clr-font: #576b66;
+  --clr-font-header: #f8efe6;
+  --clr-background: #f7ede2;
+  --clr-background-accent: #84a59d;
+  --clr-input: #faf5f0;
+  --clr-input-active: #faeadb;
+  --clr-btn: #ee9290;
+  --clr-btn-hover: #d47775;
+  --clr-btn-active: #ca3d3b;
+  --clr-btn-shadow: #ca3d3b;
+  --clr-btn-font: white;
+  --clr-search-results: #5f756f;
+  --clr-search-results-background: #f5cac3;
+  --clr-search-results-background-hover: rgb(241, 171, 160);
+  --clr-search-results-border: #c0948d;
+  --border-radius: 5px;
+  --clr-svg: invert(44%) sepia(10%) saturate(593%) hue-rotate(113deg)
+    brightness(96%) contrast(85%);
+
+  /* --clr-font: rgb(43, 43, 43);
   --clr-background: rgb(238, 238, 238);
   --clr-background-accent: rgb(206, 206, 206);
   --clr-btn: rgb(97, 97, 97);
@@ -9,7 +28,7 @@
   --clr-search-results: rgb(43, 43, 43);
   --clr-search-results-background: rgb(223, 223, 223);
   --clr-search-results-border: rgb(201, 201, 201);
-  --border-radius: 5px;
+  --border-radius: 5px; */
 }
 
 *,
@@ -18,11 +37,12 @@
   box-sizing: border-box;
 }
 ::selection {
-  background-color: black;
-  color: white;
+  background-color: var(--clr-font);
+  color: var(--clr-background);
 }
-
-html,
+:root {
+  font-size: 14px;
+}
 body {
   background-color: var(--clr-background);
   color: var(--clr-font);
@@ -43,5 +63,21 @@ button {
   border-radius: var(--border-radius);
   background-color: var(--clr-btn);
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.55rem 1rem;
+  transition: all 100ms ease;
+  box-shadow: 0 0 2px 1px var(--clr-btn-shadow);
+}
+
+button:hover {
+  background-color: var(--clr-btn-hover);
+}
+
+button:active {
+  background-color: var(--clr-btn-active);
+}
+
+@media screen and (min-width: 500px) {
+  :root {
+    font-size: 17px;
+  }
 }

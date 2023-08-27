@@ -1,5 +1,8 @@
 <template>
-  <div class="header__container">
+  <div
+    class="header__container"
+    @click="this.dataStore.setCitySelectedToTrue()"
+  >
     <div class="header__wrapper">
       <h1 class="logo-text">
         <span class="text-logo__drinnie">Drinnie</span>
@@ -39,11 +42,12 @@ export default {
   background-color: var(--clr-background-accent);
   margin: 0;
   padding: 0;
+  color: var(--clr-font-header);
 }
 .header__wrapper {
   margin: auto;
   display: flex;
-  width: 80%;
+  width: 79.75%;
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
@@ -59,6 +63,7 @@ export default {
   text-transform: uppercase;
 }
 .city-name {
+  font-weight: 500;
   font-size: 1.125rem;
   margin: 0;
 }
