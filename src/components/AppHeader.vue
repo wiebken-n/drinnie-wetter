@@ -1,7 +1,10 @@
 <template>
   <div class="header__container">
     <div class="header__wrapper">
-      <h1 class="logo-text">Grumpy Weather</h1>
+      <h1 class="logo-text">
+        <span class="text-logo__drinnie">Drinnie</span>
+        <span class="text-logo__wetter"> Wetter</span>
+      </h1>
       <!-- <p class="divider" v-if="this.dataStore.currentCityLat">|</p> -->
       <p class="city-name">{{ giveCurrentCityName }}</p>
     </div>
@@ -32,7 +35,7 @@ export default {
 
 <style scoped>
 .header__container {
-  height: 4rem;
+  height: 3.8rem;
   background-color: var(--clr-background-accent);
   margin: 0;
   padding: 0;
@@ -44,12 +47,16 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
-  padding-block: 1rem 1.125rem;
+  padding-top: 1rem;
+  margin-bottom: 0;
 }
 .logo-text,
 .divider {
   font-size: 1.5rem;
   margin: 0;
+}
+.text-logo__drinnie {
+  text-transform: uppercase;
 }
 .city-name {
   font-size: 1.125rem;

@@ -81,7 +81,6 @@ export default {
   font-size: 1.25rem;
 }
 .quip-text {
-  font-variant-caps: all-petite-caps;
   font-weight: 500;
   padding-top: 2.5rem;
   margin: auto;

@@ -1,42 +1,44 @@
 <template>
-  <div class="input__wrapper">
-    <div class="search-city__wrapper">
-      <input
-        type="text"
-        placeholder="Gib einen Ortsnamen ein"
-        v-model.trim="this.dataStore.currentCity"
-        id="search-city__input"
-      />
-      <button
-        class="search-city__btn"
-        for="search-city__input"
-        @click="searchForCity()"
-      >
-        <img
-          class="search-icon"
-          src="@/assets/icons/search.svg"
-          alt="a magnifying-glass"
+  <div class="city-selection__container">
+    <div class="input__wrapper">
+      <div class="search-city__wrapper">
+        <input
+          type="text"
+          placeholder="Gib einen Ortsnamen ein"
+          v-model.trim="this.dataStore.currentCity"
+          id="search-city__input"
         />
-      </button>
-    </div>
-  </div>
-
-  <div class="city-results__wrapper">
-    <div
-      class="city-results__container"
-      v-for="city in this.dataStore.currentGeoData"
-      :key="city.latitude"
-    >
-      <div class="city-result" v-if="this.dataStore.citySelected === false">
-        <h3 class="city__data"></h3>
-
-        <button class="select-city__button" @click="this.selectCity(city)">
-          {{ city.name }} - {{ city.country }} {{ city.state }}
+        <button
+          class="search-city__btn"
+          for="search-city__input"
+          @click="searchForCity()"
+        >
+          <img
+            class="search-icon"
+            src="@/assets/icons/search.svg"
+            alt="a magnifying-glass"
+          />
         </button>
       </div>
+    </div>
 
-      <!-- {{ city.latitude }}
+    <div class="city-results__wrapper">
+      <div
+        class="city-results__container"
+        v-for="city in this.dataStore.currentGeoData"
+        :key="city.latitude"
+      >
+        <div class="city-result" v-if="this.dataStore.citySelected === false">
+          <h3 class="city__data"></h3>
+
+          <button class="select-city__button" @click="this.selectCity(city)">
+            {{ city.name }} - {{ city.country }} {{ city.state }}
+          </button>
+        </div>
+
+        <!-- {{ city.latitude }}
     {{ city.longitude }} -->
+      </div>
     </div>
   </div>
 </template>
@@ -126,9 +128,11 @@ body {
   justify-content: center;
   text-align: center;
 }
-
+.city-selection__container {
+  background-color: var(--clr-background-accent);
+  padding-bottom: 1.2rem;
+}
 .input__wrapper {
-  padding-top: 1rem;
   width: 80%;
   margin: auto;
 }

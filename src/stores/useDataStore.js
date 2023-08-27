@@ -9,29 +9,32 @@ export const useDataStore = defineStore("state", {
       currentCityLat: "",
       currentCityLon: "",
       currentCityWeatherData: {},
+      citySelectionActive: false,
       citySelected: false,
       weatherQuips: {
         currentQuip: "",
         currentArray: [],
         collection: {
           sunny: [
-            "Viel Spaß mit dem Sonnenbrand.",
+            "Schotten dicht, sonst überstrahlt die Sonne den Bildschirm.",
             "Eindeutig zu sonnig zum rausgehen.",
           ],
           rainy: [
-            "Jep, schon wieder Regen",
-            "Oh, du hast einen Regenschirm dabei? Das wird dir viel helfen, wenn der Wind dich wegweht. ",
-            "Wenn man auf outdoor-duschen steht, spricht nichts dagegen rauszugehen.",
+            "Regengeräusche, der perfekte Soundtrack für einen Sofatag.",
+            "Regen, Sofa, Netflix - a perfect match.",
           ],
-          cold: ["Viel zu kalt zum rausgehen.", "kaaalt"],
+          cold: [
+            "Zeit zum einkuscheln auf dem Sofa.",
+            "Zeit für einen heißen Kakao.",
+          ],
           hot: [
-            "Am besten totstellen bis es wieder kühler ist.",
-            "too fucking hot",
-            "way too hot",
-            "just stay insdide man",
+            "Ventilator an, Füße hoch.",
+            "Eiskaffee machen und die indoor-Kühle genießen.",
           ],
-          cloudy: ["Grau in grau..."],
-          snowy: ["Schneeschippen, wer mag es nicht..."],
+          cloudy: ["Perfektes Lesewetter."],
+          snowy: [
+            "Machs dir auf dem Sofa gemütlich und genieße das Winterwetter.",
+          ],
         },
       },
     };
