@@ -79,7 +79,7 @@ export default {
       this.dataStore.citySelected = false;
     },
     async selectCity(city, dataStoreDayLocation, quipDataPath) {
-      this.dataStore.selectThisCity(city);
+      await this.dataStore.selectThisCity(city);
       await this.dataStore.fetchWeatherData(
         this.dataStore.currentCityLat,
         this.dataStore.currentCityLon
@@ -93,9 +93,9 @@ export default {
     filterQuips(city, dataStoreDayLocation, quipDataPath) {
       for (let i = 0; i < 3; i++) {
         const currentQuipDataPath = quipDataPath[i];
-        console.log(currentQuipDataPath);
-        console.log(dataStoreDayLocation.daily.data[i].temperatureMax);
-        console.log(dataStoreDayLocation.daily.data[i].summary);
+        // console.log(currentQuipDataPath);
+        // console.log(dataStoreDayLocation.daily.data[i].temperatureMax);
+        // console.log(dataStoreDayLocation.daily.data[i].summary);
         if (dataStoreDayLocation.daily.data[i].temperatureMax >= 20) {
           for (let entry of this.dataStore.weatherQuips.collection.hot) {
             currentQuipDataPath.quipArray.push(entry);

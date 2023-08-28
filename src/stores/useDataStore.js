@@ -80,6 +80,11 @@ export const useDataStore = defineStore("state", {
         .then((response) => response.json())
         .then((data) => (this.currentGeoData = data));
     },
+    selectThisCity(city) {
+      this.currentCityGeoData = city;
+      this.currentCityLat = this.currentCityGeoData.latitude;
+      this.currentCityLon = this.currentCityGeoData.longitude;
+    },
     fetchWeatherData(currentCityLat, currentCityLon) {
       return fetch(
         `https://api.pirateweather.net/forecast/${process.env.VUE_APP_API_KEY_WEATHER}/${currentCityLat},${currentCityLon}?exclude=minutely,hourly,alerts&units=si`,
@@ -98,11 +103,6 @@ export const useDataStore = defineStore("state", {
         .then((data) => (this.currentCityWeatherData = data));
     },
 
-    selectThisCity(city) {
-      this.currentCityGeoData = city;
-      this.currentCityLat = this.currentCityGeoData.latitude;
-      this.currentCityLon = this.currentCityGeoData.longitude;
-    },
     // determineRandomNumber() {
     //   this.quipArrayLength = this.dataStore.weatherQuips.currentArray.length;
     //   console.log(this.quipArrayLength);
@@ -139,10 +139,9 @@ export const useDataStore = defineStore("state", {
       return Math.round(temperature);
     },
 
-    // -----------------!!!!!!!!!!!!!!!!!!!!!!!!!!---change to active
     convertPrecipationProbabilityToPercent(precipationProb) {
       let precipProb = precipationProb * 100;
-      // precipProb = Math.round(precipProb);
+      precipProb = Math.round(precipProb);
       return precipProb + "%";
     },
   },
