@@ -5,27 +5,37 @@
   >
     <div v-if="this.dataStore.currentCityWeatherData.timezone">
       <div class="weather-data__container">
-        <!-- <h2>{{ this.dataStore.currentCityGeoData.name }}</h2> -->
         <img
           class="current-weather__icon"
           :src="
             require('@/assets/icons/' +
-              this.dataStore.currentCityWeatherData.currently.icon +
+              this.dataStore.currentCityWeatherData.daily.data[1].icon +
               '.svg')
           "
         />
         <div class="temp-rain__wrapper">
           <h2 class="temperature">
-            {{
-              this.dataStore.roundTemperature(
-                this.dataStore.currentCityWeatherData.currently.temperature
-              )
-            }}°C
+            <span class="temp-max-text"
+              >{{
+                this.dataStore.roundTemperature(
+                  this.dataStore.currentCityWeatherData.daily.data[1]
+                    .temperatureHigh
+                )
+              }}°C
+            </span>
+            <small class="temp-min-text">
+              {{
+                this.dataStore.roundTemperature(
+                  this.dataStore.currentCityWeatherData.daily.data[1]
+                    .temperatureLow
+                )
+              }}°C</small
+            >
           </h2>
           <h2 class="rain">
             {{
               this.dataStore.convertPrecipationProbabilityToPercent(
-                this.dataStore.currentCityWeatherData.currently.temperature
+                this.dataStore.currentCityWeatherData.daily.data[1].temperature
               )
             }}
             Regen
@@ -33,37 +43,21 @@
         </div>
       </div>
       <p class="quip-text">
-        {{ this.dataStore.weatherQuips[0].quip }}
+        {{ this.dataStore.weatherQuips[1].quip }}
       </p>
-
-      <div>
-        <!-- {{ this.dataStore.currentCityWeatherData }} -->
-      </div>
     </div>
   </div>
 </template>
 <script>
 import { useDataStore } from "@/stores/useDataStore.js";
 export default {
-  name: "ShowWeatherVue",
+  name: "ShowWeatherTomorrowVue",
   setup() {
     const dataStore = useDataStore();
     return {
       dataStore,
     };
   },
-  // computed: {
-  //   roundTemperature() {
-  //     return Math.round(
-  //       this.dataStore.currentCityWeatherData.currently.temperature
-  //     );
-  //   },
-  //   convertPrecipationProbabilityToPercent() {
-  //     let precipProb =
-  //       this.dataStore.currentCityWeatherData.currently.precipProbability * 100;
-  //     return precipProb + "%";
-  //   },
-  // },
 };
 </script>
 
@@ -89,6 +83,9 @@ export default {
 
 .temperature {
   font-size: 2rem;
+}
+.temp-min-text {
+  font-size: 1.25rem;
 }
 .rain {
   font-size: 1.25rem;

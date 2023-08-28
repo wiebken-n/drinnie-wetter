@@ -3,13 +3,14 @@
   --clr-font-header: #f8efe6;
   --clr-background: #f7ede2;
   --clr-background-accent: #84a59d;
+  --clr-nav-background: linear-gradient(#84a59d 80%, #f7ede2 81%);
   --clr-input: #faf5f0;
   --clr-input-active: #faeadb;
   --clr-btn: #ee9290;
   --clr-btn-hover: #d47775;
   --clr-btn-active: #ca3d3b;
   --clr-btn-shadow: #ca3d3b;
-  --clr-btn-font: white;
+  --clr-btn-font: #576b66;
   --clr-search-results: #5f756f;
   --clr-search-results-background: #f5cac3;
   --clr-search-results-background-hover: rgb(241, 171, 160);

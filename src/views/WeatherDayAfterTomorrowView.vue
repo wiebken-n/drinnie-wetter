@@ -3,21 +3,21 @@
   <select-city-vue />
   <select-day-vue />
   <div class="wrapper">
-    <show-weather-vue />
+    <show-weather-day-after-tomorrow-vue />
   </div>
 </template>
 
 <script>
 import SelectCityVue from "@/components/SelectCity.vue";
-import ShowWeatherVue from "@/components/ShowWeather.vue";
+import ShowWeatherDayAfterTomorrowVue from "@/components/ShowWeatherDayAfterTomorrow.vue";
 import AppHeaderVue from "@/components/AppHeader.vue";
 import SelectDayVue from "@/components/SelectDay.vue";
 
 export default {
-  name: "WeatherView",
+  name: "WeatherDayAfterTomorrowView",
   components: {
     SelectCityVue,
-    ShowWeatherVue,
+    ShowWeatherDayAfterTomorrowVue,
     AppHeaderVue,
     SelectDayVue,
   },

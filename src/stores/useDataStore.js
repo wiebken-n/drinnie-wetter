@@ -1,5 +1,7 @@
 import { defineStore } from "pinia";
 
+// this.dataStore.currentCityWeatherData.currently,
+// this.dataStore.weatherQuips.day0
 export const useDataStore = defineStore("state", {
   state() {
     return {
@@ -13,19 +15,19 @@ export const useDataStore = defineStore("state", {
       weatherQuips: {
         currentQuip: "",
         currentArray: [],
-        day0: {
+        0: {
           quip: "",
           quipArray: [],
           quipArrayLength: 0,
           randomNumber: 0,
         },
-        day1: {
+        1: {
           quip: "",
           quipArray: [],
           quipArrayLength: 0,
           randomNumber: 0,
         },
-        day2: {
+        2: {
           quip: "",
           quipArray: [],
           quipArrayLength: 0,
@@ -99,7 +101,6 @@ export const useDataStore = defineStore("state", {
       this.currentCityGeoData = city;
       this.currentCityLat = this.currentCityGeoData.latitude;
       this.currentCityLon = this.currentCityGeoData.longitude;
-      console.log(this.currentCityGeoData);
     },
     // determineRandomNumber() {
     //   this.quipArrayLength = this.dataStore.weatherQuips.currentArray.length;
