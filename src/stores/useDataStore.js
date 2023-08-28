@@ -12,6 +12,7 @@ export const useDataStore = defineStore("state", {
       currentCityLon: "",
       currentCityWeatherData: {},
       citySelected: false,
+      selectedDay: "",
       weatherQuips: {
         currentQuip: "",
         currentArray: [],
@@ -137,10 +138,11 @@ export const useDataStore = defineStore("state", {
     roundTemperature(temperature) {
       return Math.round(temperature);
     },
-    convertPrecipationProbabilityToPercent() {
-      let precipProb =
-        this.currentCityWeatherData.currently.precipProbability * 100;
-      precipProb = Math.round(precipProb);
+
+    // -----------------!!!!!!!!!!!!!!!!!!!!!!!!!!---change to active
+    convertPrecipationProbabilityToPercent(precipationProb) {
+      let precipProb = precipationProb * 100;
+      // precipProb = Math.round(precipProb);
       return precipProb + "%";
     },
   },

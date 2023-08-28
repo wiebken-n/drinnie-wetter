@@ -25,7 +25,8 @@
           <h2 class="rain">
             {{
               this.dataStore.convertPrecipationProbabilityToPercent(
-                this.dataStore.currentCityWeatherData.currently.temperature
+                this.dataStore.currentCityWeatherData.currently
+                  .precipProbability
               )
             }}
             Regen

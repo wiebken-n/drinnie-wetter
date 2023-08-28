@@ -1,24 +1,49 @@
 <template>
   <div class="nav__wrapper">
     <div class="button__wrapper">
-      <button @click="toToday">aktuell</button>
-      <button @click="toTomorrow">morgen</button>
-      <button @click="toDayAfterTomorrow">übermorgen</button>
+      <button
+        @click="toToday"
+        :class="{ active: this.dataStore.selectedDay === 'today' }"
+      >
+        aktuell
+      </button>
+      <button
+        @click="toTomorrow"
+        :class="{ active: this.dataStore.selectedDay === 'tomorrow' }"
+      >
+        Morgen
+      </button>
+      <button
+        @click="toDayAfterTomorrow"
+        :class="{ active: this.dataStore.selectedDay === 'day-after-tomorrow' }"
+      >
+        übermorgen
+      </button>
     </div>
   </div>
 </template>
 
 <script>
+import { useDataStore } from "@/stores/useDataStore.js";
 export default {
   name: "SelectDayVue",
+  setup() {
+    const dataStore = useDataStore();
+    return {
+      dataStore,
+    };
+  },
   methods: {
     toToday() {
+      this.dataStore.selectedDay = "today";
       this.$router.push("/");
     },
     toTomorrow() {
+      this.dataStore.selectedDay = "tomorrow";
       this.$router.push("/tomorrow");
     },
     toDayAfterTomorrow() {
+      this.dataStore.selectedDay = "day-after-tomorrow";
       this.$router.push("/in-two-days");
     },
   },
@@ -29,7 +54,6 @@ export default {
 .nav__wrapper {
   padding-block: 0 2rem;
   width: 100%;
-  background-color: red;
   background: var(--clr-nav-background);
 }
 .button__wrapper {
@@ -43,7 +67,11 @@ export default {
 button {
   font-size: 0.85rem;
   font-weight: 600;
-  min-width: 8rem;
+  width: 6rem;
   flex-grow: 1;
+}
+.active {
+  background-color: var(--clr-btn-active);
+  box-shadow: 0 0 5px 2px var(--clr-font);
 }
 </style>
