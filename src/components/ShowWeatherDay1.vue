@@ -37,7 +37,8 @@
               this.selectCity(
                 city,
                 this.dataStore.currentCityWeatherData.currently,
-                this.dataStore.weatherQuips.day0
+                this.dataStore.weatherQuips.currentArray,
+                this.dataStore.weatherQuips.currentQuip
               )
             "
           >
@@ -82,39 +83,39 @@ export default {
     toggleCitySelected() {
       this.dataStore.citySelected = false;
     },
-    async selectCity(city, dataStoreDayLocation, quipDataPath) {
+    async selectCity(city, dataStoreDayLocation, quipArrayDay, quipDay) {
       this.dataStore.selectThisCity(city);
       await this.dataStore.fetchWeatherData(
         this.dataStore.currentCityLat,
         this.dataStore.currentCityLon
       );
-      this.filterQuips(city, dataStoreDayLocation, quipDataPath);
+      this.filterQuips(dataStoreDayLocation, quipArrayDay, quipDay);
       this.dataStore.citySelected = true;
       this.dataStore.currentCity = "";
       this.dataStore.currentGeoData = {};
     },
 
-    filterQuips(city, dataStoreDayLocation, quipDataPath) {
-      if (dataStoreDayLocation.temperature > 20) {
+    filterQuips(dataStoreDayLocation, quipArrayDay, quipDay) {
+      if (dataStoreDayLocation.temperature > 23) {
         for (let entry of this.dataStore.weatherQuips.collection.hot) {
-          quipDataPath.quipArray.push(entry);
+          quipArrayDay.push(entry);
         }
       }
-      if (dataStoreDayLocation.temperature < 20) {
+      if (dataStoreDayLocation.temperature < 15) {
         for (let entry of this.dataStore.weatherQuips.collection.cold) {
-          quipDataPath.quipArray.push(entry);
+          quipArrayDay.push(entry);
         }
       }
       if (dataStoreDayLocation.summary === "Rain") {
         for (let entry of this.dataStore.weatherQuips.collection.rainy) {
-          quipDataPath.quipArray.push(entry);
+          quipArrayDay.push(entry);
         }
       }
-      console.log(quipDataPath.quipArray);
-      this.determineRandomNumber(city, dataStoreDayLocation, quipDataPath);
-      this.randomQuip = quipDataPath.quipArray[quipDataPath.randomNumber];
-      quipDataPath.quip = this.randomQuip;
-      quipDataPath.quipArray = [];
+      this.determineRandomNumber();
+      this.randomQuip = quipArrayDay[this.randomNumber];
+      quipDay = this.randomQuip;
+      console.log(quipDay);
+      quipArrayDay = [];
     },
 
     //  filterQuips() {
@@ -141,16 +142,12 @@ export default {
     //   this.dataStore.weatherQuips.currentArray = [];
     // },
 
-    determineRandomNumber(city, dataStoreDayLocation, quipDataPath) {
-      quipDataPath.quipArrayLength = quipDataPath.quipArray.length;
-      console.log(quipDataPath.quipArrayLength);
-      const randomInt = Math.floor(
-        Math.random() * quipDataPath.quipArrayLength
-      );
+    determineRandomNumber() {
+      this.quipArrayLength = this.dataStore.weatherQuips.currentArray.length;
+      console.log(this.quipArrayLength);
+      const randomInt = Math.floor(Math.random() * this.quipArrayLength);
       console.log(randomInt);
-      console.log(quipDataPath.randomNumber);
-      quipDataPath.randomNumber = randomInt;
-      console.log(quipDataPath.randomNumber);
+      this.randomNumber = randomInt;
     },
   },
 };

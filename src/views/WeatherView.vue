@@ -28,3 +28,5 @@ export default {
   position: relative;
 }
 </style>
+
+// tomorrow: daily[1] // in 2 days: daily[2] // in 3 days: daily [3]
