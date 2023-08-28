@@ -37,7 +37,8 @@
               this.selectCity(
                 city,
                 this.dataStore.currentCityWeatherData,
-                this.dataStore.weatherQuips
+                this.dataStore.weatherQuips,
+                this.dataStore.weatherData
               )
             "
           >
@@ -78,19 +79,20 @@ export default {
     toggleCitySelected() {
       this.dataStore.citySelected = false;
     },
-    async selectCity(city, dataStoreDayLocation, quipDataPath) {
+    // async selectCity(city, dataStoreDayLocation, quipDataPath) {
+    async selectCity(city) {
       await this.dataStore.selectThisCity(city);
       await this.dataStore.fetchWeatherData(
         this.dataStore.currentCityLat,
         this.dataStore.currentCityLon
       );
-      this.filterQuips(city, dataStoreDayLocation, quipDataPath);
+      // this.filterQuips(city, dataStoreDayLocation, quipDataPath);
       this.dataStore.citySelected = true;
-      this.dataStore.currentCity = "";
-      this.dataStore.currentGeoData = {};
+      // this.dataStore.currentCity = "";
+      // this.dataStore.currentGeoData = {};
     },
 
-    filterQuips(city, dataStoreDayLocation, quipDataPath) {
+    filterQuips(dataStoreDayLocation, quipDataPath) {
       for (let i = 0; i < 3; i++) {
         const currentQuipDataPath = quipDataPath[i];
         // console.log(currentQuipDataPath);
@@ -113,7 +115,6 @@ export default {
         }
 
         this.determineRandomNumber(
-          city,
           dataStoreDayLocation,
           quipDataPath,
           currentQuipDataPath
@@ -129,7 +130,6 @@ export default {
     },
 
     determineRandomNumber(
-      city,
       dataStoreDayLocation,
       quipDataPath,
       currentQuipDataPath
@@ -141,6 +141,23 @@ export default {
         Math.random() * currentQuipDataPath.quipArrayLength
       );
       currentQuipDataPath.randomNumber = randomInt;
+    },
+  },
+  computed: {
+    weatherData() {
+      return this.dataStore.currentCityWeatherData;
+    },
+  },
+  watch: {
+    watchWeatherData(weatherData) {
+      console.log(weatherData);
+      this.filterQuips(
+        this.dataStore.currentCityWeatherData,
+        this.dataStore.weatherQuips
+      );
+      this.dataStore.citySelected = true;
+      this.dataStore.currentCity = "";
+      this.dataStore.currentGeoData = {};
     },
   },
 };
