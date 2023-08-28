@@ -21,7 +21,6 @@
         </button>
       </div>
     </div>
-
     <div class="city-results__wrapper">
       <div
         class="city-results__container"
@@ -30,15 +29,13 @@
       >
         <div class="city-result" v-if="this.dataStore.citySelected === false">
           <h3 class="city__data"></h3>
-
           <button
             class="select-city__button"
             @click="
               this.selectCity(
                 city,
                 this.dataStore.currentCityWeatherData,
-                this.dataStore.weatherQuips,
-                this.dataStore.weatherData
+                this.dataStore.weatherQuips
               )
             "
           >
@@ -49,7 +46,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import { useDataStore } from "@/stores/useDataStore";
 export default {
@@ -68,7 +64,6 @@ export default {
       randomQuip: "",
     };
   },
-
   methods: {
     searchForCity() {
       if (this.dataStore.currentCity !== "") {
@@ -79,20 +74,18 @@ export default {
     toggleCitySelected() {
       this.dataStore.citySelected = false;
     },
-    // async selectCity(city, dataStoreDayLocation, quipDataPath) {
-    async selectCity(city) {
+    async selectCity(city, dataStoreDayLocation, quipDataPath) {
       await this.dataStore.selectThisCity(city);
       await this.dataStore.fetchWeatherData(
         this.dataStore.currentCityLat,
         this.dataStore.currentCityLon
       );
-      // this.filterQuips(city, dataStoreDayLocation, quipDataPath);
+      this.filterQuips(city, dataStoreDayLocation, quipDataPath);
       this.dataStore.citySelected = true;
-      // this.dataStore.currentCity = "";
-      // this.dataStore.currentGeoData = {};
+      this.dataStore.currentCity = "";
+      this.dataStore.currentGeoData = {};
     },
-
-    filterQuips(dataStoreDayLocation, quipDataPath) {
+    filterQuips(city, dataStoreDayLocation, quipDataPath) {
       for (let i = 0; i < 3; i++) {
         const currentQuipDataPath = quipDataPath[i];
         // console.log(currentQuipDataPath);
@@ -113,8 +106,8 @@ export default {
             currentQuipDataPath.quipArray.push(entry);
           }
         }
-
         this.determineRandomNumber(
+          city,
           dataStoreDayLocation,
           quipDataPath,
           currentQuipDataPath
@@ -128,8 +121,8 @@ export default {
         currentQuipDataPath.quipArrayLength = 0;
       }
     },
-
     determineRandomNumber(
+      city,
       dataStoreDayLocation,
       quipDataPath,
       currentQuipDataPath
@@ -141,23 +134,6 @@ export default {
         Math.random() * currentQuipDataPath.quipArrayLength
       );
       currentQuipDataPath.randomNumber = randomInt;
-    },
-  },
-  computed: {
-    weatherData() {
-      return this.dataStore.currentCityWeatherData;
-    },
-  },
-  watch: {
-    watchWeatherData(weatherData) {
-      console.log(weatherData);
-      this.filterQuips(
-        this.dataStore.currentCityWeatherData,
-        this.dataStore.weatherQuips
-      );
-      this.dataStore.citySelected = true;
-      this.dataStore.currentCity = "";
-      this.dataStore.currentGeoData = {};
     },
   },
 };
@@ -177,7 +153,6 @@ body {
   width: 80%;
   margin: auto;
 }
-
 .search-city__wrapper {
   display: flex;
   flex-direction: row;
@@ -186,7 +161,6 @@ body {
   width: 100%;
   gap: 0.15rem;
 }
-
 #search-city__input {
   height: 2.3rem;
   padding-inline: 0.5rem;
@@ -196,7 +170,6 @@ body {
   border: 2px solid var(--clr-font);
   font-size: 1rem;
 }
-
 #search-city__input:enabled,
 #search-city__input:active {
   background-color: var(--clr-input-active);
@@ -244,7 +217,6 @@ body {
   border: 1px solid var(--clr-search-results-border);
   box-shadow: 0 0 5px 0 var(--clr-search-results-border);
 }
-
 .select-city__button:hover {
   background-color: var(--clr-search-results-background-hover);
 }
