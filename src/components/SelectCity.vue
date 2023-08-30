@@ -65,9 +65,9 @@ export default {
     };
   },
   methods: {
-    searchForCity() {
+    async searchForCity() {
       if (this.dataStore.currentCity !== "") {
-        this.dataStore.fetchLocationData(this.dataStore.currentCity);
+        await this.dataStore.fetchLocationData(this.dataStore.currentCity);
         this.toggleCitySelected();
       }
     },
@@ -75,7 +75,7 @@ export default {
       this.dataStore.citySelected = false;
     },
     async selectCity(city, dataStoreDayLocation, quipDataPath) {
-      await this.dataStore.selectThisCity(city);
+      this.dataStore.selectThisCity(city);
       await this.dataStore.fetchWeatherData(
         this.dataStore.currentCityLat,
         this.dataStore.currentCityLon
