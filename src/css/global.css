@@ -7,14 +7,14 @@
   --clr-footer-background: linear-gradient(0deg, #adc0bc 95%, #f7ede2 96%);
   --clr-input: #faf5f0;
   --clr-input-active: #faeadb;
-  --clr-btn: #ee9290;
-  --clr-btn-hover: #d47775;
-  --clr-btn-active: #f57a78;
-  --clr-btn-shadow: #ca3d3b;
+  --clr-btn: #eea390;
+  --clr-btn-hover: #e67a5f;
+  --clr-btn-active: #e4785c;
+  --clr-btn-shadow: #682717;
   --clr-btn-font: #576b66;
   --clr-search-results: #5f756f;
-  --clr-search-results-background: #f5cac3;
-  --clr-search-results-background-hover: rgb(241, 171, 160);
+  --clr-search-results-background: #ecc3b9;
+  --clr-search-results-background-hover: #e9a594;
   --clr-search-results-border: #c0948d;
   --border-radius: 5px;
   --clr-svg: invert(44%) sepia(10%) saturate(593%) hue-rotate(113deg)
@@ -23,6 +23,31 @@
     brightness(90%) contrast(95%);
   --clr-svg-git-hover: invert(44%) sepia(10%) saturate(593%) hue-rotate(113deg)
     brightness(70%) contrast(95%);
+
+  /* --clr-font: #576b66;
+    --clr-font-header: #f8efe6;
+    --clr-background: #f7ede2;
+    --clr-background-accent: #84a59d;
+    --clr-nav-background: linear-gradient(#84a59d 80%, #f7ede2 81%);
+    --clr-footer-background: linear-gradient(0deg, #adc0bc 95%, #f7ede2 96%);
+    --clr-input: #faf5f0;
+    --clr-input-active: #faeadb;
+    --clr-btn: #ee9290;
+    --clr-btn-hover: #d47775;
+    --clr-btn-active: #f57a78;
+    --clr-btn-shadow: #ca3d3b;
+    --clr-btn-font: #576b66;
+    --clr-search-results: #5f756f;
+    --clr-search-results-background: #f5cac3;
+    --clr-search-results-background-hover: rgb(241, 171, 160);
+    --clr-search-results-border: #c0948d;
+    --border-radius: 5px;
+    --clr-svg: invert(44%) sepia(10%) saturate(593%) hue-rotate(113deg)
+      brightness(96%) contrast(85%);
+    --clr-svg-git: invert(44%) sepia(10%) saturate(593%) hue-rotate(113deg)
+      brightness(90%) contrast(95%);
+    --clr-svg-git-hover: invert(44%) sepia(10%) saturate(593%) hue-rotate(113deg)
+      brightness(70%) contrast(95%); */
 }
 
 *,
@@ -64,10 +89,12 @@ button {
 
 button:hover {
   background-color: var(--clr-btn-hover);
+  box-shadow: 0 0 4px 1px var(--clr-btn-shadow);
 }
 
 button:active {
   background-color: var(--clr-btn-active);
+  box-shadow: 0 0 4px 1px var(--clr-btn-shadow);
 }
 
 @media screen and (min-width: 500px) {

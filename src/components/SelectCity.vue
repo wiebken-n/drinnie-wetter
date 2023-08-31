@@ -170,7 +170,7 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  gap: 0.15rem;
+  gap: 0.8rem;
 }
 #search-city__input {
   height: 2.3rem;
@@ -195,7 +195,6 @@ body {
 
 .city-results__wrapper {
   background: transparent;
-
   position: absolute;
   width: 100%;
   display: flex;
