@@ -7,6 +7,7 @@
           placeholder="Gib einen Ortsnamen ein"
           v-model.trim="this.dataStore.currentCity"
           id="search-city__input"
+          @keyup.enter="searchForCity()"
         />
         <button
           class="search-city__btn"
