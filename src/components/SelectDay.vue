@@ -11,7 +11,7 @@
         @click="toTomorrow"
         :class="{ active: this.dataStore.selectedDay === 'tomorrow' }"
       >
-        Morgen
+        morgen
       </button>
       <button
         @click="toDayAfterTomorrow"
@@ -72,6 +72,5 @@ button {
 }
 .active {
   background-color: var(--clr-btn-active);
-  box-shadow: 0 0 5px 2px var(--clr-font);
 }
 </style>

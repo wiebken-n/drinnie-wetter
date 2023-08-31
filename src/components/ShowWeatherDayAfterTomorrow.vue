@@ -43,10 +43,12 @@
           </h2>
         </div>
       </div>
+
       <p v-if="this.dataStore.checkCounterForQuipRender" class="quip-text">
         {{ this.dataStore.weatherQuips[2].quip }}
       </p>
       <p v-else class="quip-text">Sofa geht immer.</p>
+      <p class="date">{{ showDate }}</p>
     </div>
   </div>
 </template>
@@ -59,6 +61,20 @@ export default {
     return {
       dataStore,
     };
+  },
+  computed: {
+    showDate() {
+      const currentDateObj = new Date();
+      const dayAfterTomorrow = new Date(currentDateObj);
+      dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 2);
+      const currentDate =
+        dayAfterTomorrow.getDate() +
+        "." +
+        dayAfterTomorrow.getMonth() +
+        "." +
+        dayAfterTomorrow.getFullYear();
+      return currentDate;
+    },
   },
 };
 </script>
@@ -96,6 +112,7 @@ export default {
 .rain {
   font-size: 1.25rem;
 }
+
 .quip-text {
   font-weight: 500;
   padding-top: 2.5rem;
@@ -103,5 +120,12 @@ export default {
   text-align: center;
   width: 100%;
   font-size: 2.125rem;
+}
+.date {
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0;
+  margin-block: 3rem 0;
 }
 </style>

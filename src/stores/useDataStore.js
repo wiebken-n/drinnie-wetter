@@ -65,7 +65,7 @@ export const useDataStore = defineStore("state", {
   },
   actions: {
     checkForCity() {
-      if (localStorage.getItem("selectedCityGeoData")) {
+      if (localStorage.getItem("selectedCityGeoData") !== "null") {
         this.currentCityGeoData = JSON.parse(
           localStorage.getItem("selectedCityGeoData")
         );
