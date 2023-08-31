@@ -74,7 +74,7 @@ export default {
   align-items: center;
   margin: auto;
   justify-content: space-evenly;
-  padding-inline: 2rem;
+  gap: 1rem;
 }
 .current-weather__icon {
   width: 5.75rem;

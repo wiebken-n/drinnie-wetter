@@ -80,6 +80,7 @@ export default {
   align-items: center;
   margin: auto;
   justify-content: space-evenly;
+  gap: 1rem;
 }
 .current-weather__icon {
   width: 5.75rem;
