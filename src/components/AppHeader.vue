@@ -8,7 +8,6 @@
         <span class="text-logo__drinnie">Drinnie</span>
         <span class="text-logo__wetter"> Wetter</span>
       </h1>
-      <!-- <p class="divider" v-if="this.dataStore.currentCityLat">|</p> -->
       <p class="city-name">{{ giveCurrentCityName }}</p>
     </div>
   </div>
