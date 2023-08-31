@@ -1,9 +1,9 @@
 <template>
-  <div
-    class="show-weather__wrapper"
-    @click="this.dataStore.setCitySelectedToTrue()"
-  >
-    <div v-if="this.dataStore.currentCityWeatherData.timezone">
+  <div class="show-weather__wrapper">
+    <div
+      class="weather-data__wrapper"
+      v-if="this.dataStore.currentCityWeatherData.timezone"
+    >
       <div class="weather-data__container">
         <img
           class="current-weather__icon"
@@ -68,6 +68,10 @@ export default {
   display: flex;
   flex-direction: column;
 }
+.weather-data__wrapper {
+  width: 100%;
+  margin-inline: auto;
+}
 .weather-data__container {
   display: flex;
   flex-direction: row;
@@ -96,7 +100,7 @@ export default {
   padding-top: 2.5rem;
   margin: auto;
   text-align: center;
-  width: 80%;
+  width: 100%;
   font-size: 2.125rem;
 }
 </style>

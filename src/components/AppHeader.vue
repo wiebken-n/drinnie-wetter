@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="header__container"
-    @click="this.dataStore.setCitySelectedToTrue()"
-  >
+  <div class="header__container">
     <div class="header__wrapper">
       <h1 class="logo-text">
         <span class="text-logo__drinnie">Drinnie</span>
