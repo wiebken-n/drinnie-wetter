@@ -54,10 +54,11 @@ export default {
   computed: {
     showDate() {
       const currentDateObj = new Date();
+      console.log(currentDateObj);
       const currentDate =
         currentDateObj.getDate() +
         "." +
-        currentDateObj.getMonth() +
+        (currentDateObj.getMonth() + 1) +
         "." +
         currentDateObj.getFullYear() +
         "  -  " +
