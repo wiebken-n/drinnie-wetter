@@ -32,9 +32,10 @@
           </h2>
         </div>
       </div>
-      <p class="quip-text">
+      <p v-if="this.dataStore.checkCounterForQuipRender" class="quip-text">
         {{ this.dataStore.weatherQuips[0].quip }}
       </p>
+      <p v-else class="quip-text">Sofa geht immer.</p>
     </div>
   </div>
 </template>

@@ -60,6 +60,11 @@ export default {
       counter: 0,
     };
   },
+  async mounted() {
+    if (this.dataStore.counter > 0) {
+      await this.adjustCounter();
+    }
+  },
   methods: {
     async searchForCity() {
       if (this.dataStore.currentCity !== "") {
@@ -81,7 +86,6 @@ export default {
     },
 
     filterQuips(city, dataStoreDayLocation, quipDataPath) {
-      console.log(city);
       for (let i = 0; i < 3; i++) {
         const currentQuipDataPath = quipDataPath[i];
         if (dataStoreDayLocation.daily.data[i].temperatureMax >= 20) {
@@ -108,8 +112,6 @@ export default {
         this.randomQuip =
           currentQuipDataPath.quipArray[currentQuipDataPath.randomNumber];
         currentQuipDataPath.quip = this.randomQuip;
-        console.log(i);
-        console.log(currentQuipDataPath.quipArray);
         currentQuipDataPath.quipArray = [];
         currentQuipDataPath.quipArrayLength = 0;
       }
@@ -121,13 +123,16 @@ export default {
       quipDataPath,
       currentQuipDataPath
     ) {
-      console.log(currentQuipDataPath);
       currentQuipDataPath.quipArrayLength =
         currentQuipDataPath.quipArray.length;
       const randomInt = Math.floor(
         Math.random() * currentQuipDataPath.quipArrayLength
       );
       currentQuipDataPath.randomNumber = randomInt;
+    },
+    adjustCounter() {
+      this.counter = this.counter + this.dataStore.counter;
+      console.log(this.counter);
     },
   },
   watch: {

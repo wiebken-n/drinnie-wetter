@@ -12,5 +12,12 @@ export default {
       dataStore,
     };
   },
+  async created() {
+    await this.dataStore.checkForCity();
+    await this.dataStore.fetchWeatherData(
+      this.dataStore.currentCityLat,
+      this.dataStore.currentCityLon
+    );
+  },
 };
 </script>

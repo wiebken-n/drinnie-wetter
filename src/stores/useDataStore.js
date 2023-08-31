@@ -1,7 +1,5 @@
 import { defineStore } from "pinia";
 
-// this.dataStore.currentCityWeatherData.currently,
-// this.dataStore.weatherQuips.day0
 export const useDataStore = defineStore("state", {
   state() {
     return {
@@ -13,6 +11,7 @@ export const useDataStore = defineStore("state", {
       currentCityWeatherData: {},
       citySelected: false,
       selectedDay: "",
+      counter: 0,
       weatherQuips: {
         currentQuip: "",
         currentArray: [],
@@ -59,7 +58,21 @@ export const useDataStore = defineStore("state", {
       },
     };
   },
+  getters: {
+    checkCounterForQuipRender() {
+      return this.weatherQuips[0].quip.length > 0;
+    },
+  },
   actions: {
+    checkForCity() {
+      if (localStorage.getItem("selectedCityGeoData")) {
+        this.currentCityGeoData = JSON.parse(
+          localStorage.getItem("selectedCityGeoData")
+        );
+        this.currentCityLat = this.currentCityGeoData.latitude;
+        this.currentCityLon = this.currentCityGeoData.longitude;
+      }
+    },
     fetchLocationData(currentCity) {
       return fetch(
         `https://api.api-ninjas.com/v1/geocoding?city=${currentCity}`,
@@ -78,14 +91,17 @@ export const useDataStore = defineStore("state", {
         }
       )
         .then((response) => response.json())
-        .then((data) => (this.currentGeoData = data));
+        .then((data) => {
+          this.currentGeoData = data;
+        });
     },
     selectThisCity(city) {
       this.currentCityGeoData = city;
+      localStorage.setItem("selectedCityGeoData", JSON.stringify(city));
       this.currentCityLat = this.currentCityGeoData.latitude;
       this.currentCityLon = this.currentCityGeoData.longitude;
     },
-    fetchWeatherData(currentCityLat, currentCityLon) {
+    async fetchWeatherData(currentCityLat, currentCityLon) {
       return fetch(
         `https://api.pirateweather.net/forecast/${process.env.VUE_APP_API_KEY_WEATHER}/${currentCityLat},${currentCityLon}?exclude=minutely,hourly,alerts&units=si`,
         {
@@ -100,38 +116,12 @@ export const useDataStore = defineStore("state", {
         }
       )
         .then((response) => response.json())
-        .then((data) => (this.currentCityWeatherData = data));
+        .then((data) => {
+          this.currentCityWeatherData = data;
+          this.counter++;
+        });
     },
 
-    // determineRandomNumber() {
-    //   this.quipArrayLength = this.dataStore.weatherQuips.currentArray.length;
-    //   console.log(this.quipArrayLength);
-    //   const randomInt = Math.floor(Math.random() * this.quipArrayLength);
-    //   console.log(randomInt);
-    //   this.randomNumber = randomInt;
-    // },
-    // filterQuips(dataStoreDayLocation, quipArrayDay, quipDay) {
-    //   if (dataStoreDayLocation.temperature > 23) {
-    //     for (let entry of this.weatherQuips.collection.hot) {
-    //       quipArrayDay.push(entry);
-    //     }
-    //   }
-    //   if (dataStoreDayLocation.temperature < 15) {
-    //     for (let entry of this.weatherQuips.collection.cold) {
-    //       quipArrayDay.push(entry);
-    //     }
-    //   }
-    //   if (dataStoreDayLocation.summary === "Rain") {
-    //     for (let entry of this.weatherQuips.collection.rainy) {
-    //       quipArrayDay.push(entry);
-    //     }
-    //   }
-    //   this.determineRandomNumber();
-    //   this.randomQuip = quipArrayDay[this.randomNumber];
-    //   quipDay = this.randomQuip;
-    //   console.log(quipDay);
-    //   quipArrayDay = [];
-    // },
     setCitySelectedToTrue() {
       this.citySelected = true;
     },
