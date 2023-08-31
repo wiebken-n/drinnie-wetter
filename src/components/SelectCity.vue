@@ -29,16 +29,7 @@
       >
         <div class="city-result" v-if="this.dataStore.citySelected === false">
           <h3 class="city__data"></h3>
-          <button
-            class="select-city__button"
-            @click="
-              this.selectCity(
-                city,
-                this.dataStore.currentCityWeatherData,
-                this.dataStore.weatherQuips
-              )
-            "
-          >
+          <button class="select-city__button" @click="this.selectCity(city)">
             {{ city.name }} - {{ city.country }} {{ city.state }}
           </button>
         </div>
@@ -62,6 +53,8 @@ export default {
       quipArrayLength: 0,
       randomNumber: 0,
       randomQuip: "",
+      currentCity: "",
+      counter: 0,
     };
   },
   methods: {
@@ -74,23 +67,20 @@ export default {
     toggleCitySelected() {
       this.dataStore.citySelected = false;
     },
-    async selectCity(city, dataStoreDayLocation, quipDataPath) {
+    async selectCity(city) {
       this.dataStore.selectThisCity(city);
       await this.dataStore.fetchWeatherData(
         this.dataStore.currentCityLat,
         this.dataStore.currentCityLon
       );
-      this.filterQuips(city, dataStoreDayLocation, quipDataPath);
-      this.dataStore.citySelected = true;
-      this.dataStore.currentCity = "";
-      this.dataStore.currentGeoData = {};
+      this.currentCity = city;
+      this.counter++;
     },
+
     filterQuips(city, dataStoreDayLocation, quipDataPath) {
+      console.log(city);
       for (let i = 0; i < 3; i++) {
         const currentQuipDataPath = quipDataPath[i];
-        // console.log(currentQuipDataPath);
-        // console.log(dataStoreDayLocation.daily.data[i].temperatureMax);
-        // console.log(dataStoreDayLocation.daily.data[i].summary);
         if (dataStoreDayLocation.daily.data[i].temperatureMax >= 20) {
           for (let entry of this.dataStore.weatherQuips.collection.hot) {
             currentQuipDataPath.quipArray.push(entry);
@@ -121,6 +111,7 @@ export default {
         currentQuipDataPath.quipArrayLength = 0;
       }
     },
+
     determineRandomNumber(
       city,
       dataStoreDayLocation,
@@ -134,6 +125,18 @@ export default {
         Math.random() * currentQuipDataPath.quipArrayLength
       );
       currentQuipDataPath.randomNumber = randomInt;
+    },
+  },
+  watch: {
+    counter() {
+      this.filterQuips(
+        this.currentCity,
+        this.dataStore.currentCityWeatherData,
+        this.dataStore.weatherQuips
+      );
+      this.dataStore.citySelected = true;
+      this.dataStore.currentCity = "";
+      this.dataStore.currentGeoData = {};
     },
   },
 };
