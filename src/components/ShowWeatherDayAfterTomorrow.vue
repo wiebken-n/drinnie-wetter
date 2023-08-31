@@ -70,7 +70,7 @@ export default {
       const currentDate =
         dayAfterTomorrow.getDate() +
         "." +
-        dayAfterTomorrow.getMonth() +
+        (dayAfterTomorrow.getMonth() + 1) +
         "." +
         dayAfterTomorrow.getFullYear();
       return currentDate;
@@ -112,7 +112,6 @@ export default {
 .rain {
   font-size: 1.25rem;
 }
-
 .quip-text {
   font-weight: 500;
   padding-top: 2.5rem;

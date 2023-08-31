@@ -69,7 +69,7 @@ export default {
       const currentDate =
         tomorrow.getDate() +
         "." +
-        tomorrow.getMonth() +
+        (tomorrow.getMonth() + 1) +
         "." +
         tomorrow.getFullYear();
       return currentDate;
