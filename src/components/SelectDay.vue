@@ -59,7 +59,7 @@ export default {
 .button__wrapper {
   display: flex;
   flex-direction: row;
-  width: 80%;
+  width: 79.8%;
   margin: auto;
   justify-content: space-around;
   gap: 1rem;

@@ -28,12 +28,14 @@
         v-for="city in this.dataStore.currentGeoData"
         :key="city.latitude"
       >
-        <div class="city-result" v-if="this.dataStore.citySelected === false">
-          <h3 class="city__data"></h3>
-          <button class="select-city__button" @click="this.selectCity(city)">
-            {{ city.name }} - {{ city.country }} {{ city.state }}
-          </button>
-        </div>
+        <Transition>
+          <div class="city-result" v-if="this.dataStore.citySelected === false">
+            <h3 class="city__data"></h3>
+            <button class="select-city__button" @click="this.selectCity(city)">
+              {{ city.name }} - {{ city.country }} {{ city.state }}
+            </button>
+          </div>
+        </Transition>
       </div>
     </div>
   </div>
@@ -185,9 +187,10 @@ body {
 .search-icon {
   filter: var(--clr-svg);
 }
+
 .city-results__wrapper {
   background: transparent;
-  z-index: 1;
+
   position: absolute;
   width: 100%;
   display: flex;
@@ -195,6 +198,7 @@ body {
   justify-content: center;
 }
 .city-results__container {
+  z-index: 2;
   background-color: transparent;
   display: flex;
   justify-content: center;
@@ -205,12 +209,13 @@ body {
   align-items: center;
   justify-content: flex-start;
   width: 80%;
-  transition: all 100ms ease;
 }
 .city__data {
   font-size: 1rem;
 }
 .select-city__button {
+  margin-top: 2px;
+  z-index: 2;
   text-align: left;
   font-size: 1rem;
   width: 100%;
@@ -219,9 +224,19 @@ body {
   font-weight: 500;
   border-radius: 3px;
   border: 1px solid var(--clr-search-results-border);
-  box-shadow: 0 0 5px 0 var(--clr-search-results-border);
+  box-shadow: 0 0 5px 1px var(--clr-search-results-border);
 }
 .select-city__button:hover {
   background-color: var(--clr-search-results-background-hover);
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 200ms ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>

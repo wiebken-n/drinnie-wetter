@@ -1,11 +1,10 @@
 <template>
-  <div
-    class="show-weather__wrapper"
-    @click="this.dataStore.setCitySelectedToTrue()"
-  >
-    <div v-if="this.dataStore.currentCityWeatherData.timezone">
+  <div class="show-weather__wrapper">
+    <div
+      class="weather-data__wrapper"
+      v-if="this.dataStore.currentCityWeatherData.timezone"
+    >
       <div class="weather-data__container">
-        <!-- <h2>{{ this.dataStore.currentCityGeoData.name }}</h2> -->
         <img
           class="current-weather__icon"
           :src="
@@ -36,10 +35,6 @@
       <p class="quip-text">
         {{ this.dataStore.weatherQuips[0].quip }}
       </p>
-
-      <div>
-        <!-- {{ this.dataStore.currentCityWeatherData }} -->
-      </div>
     </div>
   </div>
 </template>
@@ -53,18 +48,6 @@ export default {
       dataStore,
     };
   },
-  // computed: {
-  //   roundTemperature() {
-  //     return Math.round(
-  //       this.dataStore.currentCityWeatherData.currently.temperature
-  //     );
-  //   },
-  //   convertPrecipationProbabilityToPercent() {
-  //     let precipProb =
-  //       this.dataStore.currentCityWeatherData.currently.precipProbability * 100;
-  //     return precipProb + "%";
-  //   },
-  // },
 };
 </script>
 
@@ -73,6 +56,10 @@ export default {
   width: 80%;
   display: flex;
   flex-direction: column;
+}
+.weather-data__wrapper {
+  width: 100%;
+  margin-inline: auto;
 }
 .weather-data__container {
   display: flex;
@@ -99,7 +86,7 @@ export default {
   padding-top: 2.5rem;
   margin: auto;
   text-align: center;
-  width: 80%;
+  width: 100%;
   font-size: 2.125rem;
 }
 </style>

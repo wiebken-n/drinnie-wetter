@@ -1,5 +1,5 @@
 <template>
-  <router-view />
+  <router-view @click="this.dataStore.setCitySelectedToTrue()" />
 </template>
 
 <script>
