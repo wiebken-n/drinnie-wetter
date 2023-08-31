@@ -4,12 +4,12 @@
   --clr-background: #f7ede2;
   --clr-background-accent: #84a59d;
   --clr-nav-background: linear-gradient(#84a59d 80%, #f7ede2 81%);
+  --clr-footer-background: linear-gradient(0deg, #adc0bc 95%, #f7ede2 96%);
   --clr-input: #faf5f0;
   --clr-input-active: #faeadb;
   --clr-btn: #ee9290;
   --clr-btn-hover: #d47775;
   --clr-btn-active: #f57a78;
-  /* --clr-btn-active: #ca3d3b; */
   --clr-btn-shadow: #ca3d3b;
   --clr-btn-font: #576b66;
   --clr-search-results: #5f756f;
@@ -19,18 +19,10 @@
   --border-radius: 5px;
   --clr-svg: invert(44%) sepia(10%) saturate(593%) hue-rotate(113deg)
     brightness(96%) contrast(85%);
-
-  /* --clr-font: rgb(43, 43, 43);
-  --clr-background: rgb(238, 238, 238);
-  --clr-background-accent: rgb(206, 206, 206);
-  --clr-btn: rgb(97, 97, 97);
-  --clr-btn-hover: rgb(66, 66, 66);
-  --clr-btn-active: rgb(24, 24, 24);
-  --clr-btn-font: white;
-  --clr-search-results: rgb(43, 43, 43);
-  --clr-search-results-background: rgb(223, 223, 223);
-  --clr-search-results-border: rgb(201, 201, 201);
-  --border-radius: 5px; */
+  --clr-svg-git: invert(44%) sepia(10%) saturate(593%) hue-rotate(113deg)
+    brightness(90%) contrast(95%);
+  --clr-svg-git-hover: invert(44%) sepia(10%) saturate(593%) hue-rotate(113deg)
+    brightness(70%) contrast(95%);
 }
 
 *,

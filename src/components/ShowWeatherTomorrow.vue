@@ -64,7 +64,7 @@ export default {
 
 <style scoped>
 .show-weather__wrapper {
-  padding-top: 15%;
+  width: 80%;
   display: flex;
   flex-direction: column;
 }
@@ -72,7 +72,6 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 80%;
   margin: auto;
   justify-content: space-evenly;
 }
