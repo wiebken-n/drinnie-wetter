@@ -2,10 +2,16 @@
   <div class="nav__wrapper">
     <div class="button__wrapper">
       <button
+        @click="toCurrent"
+        :class="{ active: this.dataStore.selectedDay === 'current' }"
+      >
+        aktuell
+      </button>
+      <button
         @click="toToday"
         :class="{ active: this.dataStore.selectedDay === 'today' }"
       >
-        aktuell
+        heute
       </button>
       <button
         @click="toTomorrow"
@@ -34,9 +40,13 @@ export default {
     };
   },
   methods: {
+    toCurrent() {
+      this.dataStore.selectedDay = "current";
+      this.$router.push("/");
+    },
     toToday() {
       this.dataStore.selectedDay = "today";
-      this.$router.push("/");
+      this.$router.push("/today");
     },
     toTomorrow() {
       this.dataStore.selectedDay = "tomorrow";
@@ -59,15 +69,15 @@ export default {
 .button__wrapper {
   display: flex;
   flex-direction: row;
-  width: 79.8%;
+  width: 79.9%;
   margin: auto;
   justify-content: space-around;
   gap: 1rem;
 }
 button {
-  font-size: 0.85rem;
-  font-weight: 600;
-  width: 6rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  width: 7rem;
   flex-grow: 1;
 }
 .active {

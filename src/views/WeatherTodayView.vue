@@ -4,7 +4,7 @@
     <select-city-vue />
     <select-day-vue />
     <div class="weater-data__wrapper">
-      <show-weather-vue />
+      <show-weather-today-vue />
     </div>
     <app-footer-vue class="footer" />
   </div>
@@ -12,18 +12,18 @@
 
 <script>
 import SelectCityVue from "@/components/SelectCity.vue";
-import ShowWeatherVue from "@/components/ShowWeather.vue";
+import ShowWeatherTodayVue from "@/components/ShowWeatherToday.vue";
 import AppHeaderVue from "@/components/AppHeader.vue";
 import SelectDayVue from "@/components/SelectDay.vue";
 import AppFooterVue from "@/components/AppFooter.vue";
 
 export default {
-  name: "WeatherView",
+  name: "WeatherTomorrowView",
   components: {
-    SelectCityVue,
-    ShowWeatherVue,
-    AppHeaderVue,
     AppFooterVue,
+    SelectCityVue,
+    ShowWeatherTodayVue,
+    AppHeaderVue,
     SelectDayVue,
   },
 };

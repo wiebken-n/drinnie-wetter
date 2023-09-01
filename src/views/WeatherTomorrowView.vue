@@ -39,7 +39,7 @@ export default {
 .weater-data__wrapper {
   width: 80%;
   max-width: 800px;
-  padding-top: 12vh;
+  padding-top: 9vh;
   display: flex;
   justify-content: center;
   flex-grow: 1;

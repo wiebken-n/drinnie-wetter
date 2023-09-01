@@ -128,6 +128,10 @@ export const useDataStore = defineStore("state", {
     roundTemperature(temperature) {
       return Math.round(temperature);
     },
+    convertWindToKph(windspeed) {
+      let wind = windspeed * 10;
+      return Math.round(wind);
+    },
 
     convertPrecipationProbabilityToPercent(precipationProb) {
       let precipProb = precipationProb * 100;
