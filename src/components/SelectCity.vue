@@ -86,20 +86,34 @@ export default {
     },
 
     filterQuips(city, dataStoreDayLocation, quipDataPath) {
+      console.log("quips are filtered");
       for (let i = 0; i < 3; i++) {
         const currentQuipDataPath = quipDataPath[i];
-        if (dataStoreDayLocation.daily.data[i].temperatureMax >= 20) {
+        for (let entry of this.dataStore.weatherQuips.collection.general) {
+          currentQuipDataPath.quipArray.push(entry);
+        }
+        if (dataStoreDayLocation.daily.data[i].temperatureMax >= 25) {
           for (let entry of this.dataStore.weatherQuips.collection.hot) {
             currentQuipDataPath.quipArray.push(entry);
           }
         }
-        if (dataStoreDayLocation.daily.data[i].temperatureMax < 20) {
+        if (dataStoreDayLocation.daily.data[i].temperatureMax < 13) {
           for (let entry of this.dataStore.weatherQuips.collection.cold) {
             currentQuipDataPath.quipArray.push(entry);
           }
         }
-        if (dataStoreDayLocation.daily.data[i].summary === "Rain") {
+        if (dataStoreDayLocation.daily.data[i].precipProbability > 0.75) {
           for (let entry of this.dataStore.weatherQuips.collection.rainy) {
+            currentQuipDataPath.quipArray.push(entry);
+          }
+        }
+        if (dataStoreDayLocation.daily.data[i].cloudCover > 0.8) {
+          for (let entry of this.dataStore.weatherQuips.collection.cloudy) {
+            currentQuipDataPath.quipArray.push(entry);
+          }
+        }
+        if (dataStoreDayLocation.daily.data[i].windSpeed > 7) {
+          for (let entry of this.dataStore.weatherQuips.collection.windy) {
             currentQuipDataPath.quipArray.push(entry);
           }
         }

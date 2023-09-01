@@ -51,8 +51,13 @@ export const useDataStore = defineStore("state", {
             "Eiskaffee machen und die indoor-Kühle genießen.",
           ],
           cloudy: ["Perfektes Lesewetter."],
+          windy: ["Sofa, Buch, Windgeräusche - perfekt."],
           snowy: [
             "Machs dir auf dem Sofa gemütlich und genieße das Winterwetter.",
+          ],
+          general: [
+            "Perfektes Sofawetter.",
+            "Zuhause gibt's kein schlechtes Wetter.",
           ],
         },
       },
