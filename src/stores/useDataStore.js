@@ -15,6 +15,12 @@ export const useDataStore = defineStore("state", {
       weatherQuips: {
         currentQuip: "",
         currentArray: [],
+        quipDataForCurrently: {
+          quip: "",
+          quipArray: [],
+          quipArrayLength: 0,
+          randomNumber: 0,
+        },
         0: {
           quip: "",
           quipArray: [],

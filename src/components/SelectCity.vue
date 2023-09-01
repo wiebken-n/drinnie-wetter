@@ -86,6 +86,48 @@ export default {
     },
 
     filterQuips(city, dataStoreDayLocation, quipDataPath) {
+      // get qips for current weather
+      for (let entry of this.dataStore.weatherQuips.collection.general) {
+        quipDataPath.quipDataForCurrently.quipArray.push(entry);
+      }
+      if (dataStoreDayLocation.currently.temperature >= 25) {
+        for (let entry of this.dataStore.weatherQuips.collection.hot) {
+          quipDataPath.quipDataForCurrently.quipArray.push(entry);
+        }
+      }
+      if (dataStoreDayLocation.currently.temperature < 13) {
+        for (let entry of this.dataStore.weatherQuips.collection.cold) {
+          quipDataPath.quipDataForCurrently.quipArray.push(entry);
+        }
+      }
+      if (dataStoreDayLocation.currently.precipProbability > 0.75) {
+        for (let entry of this.dataStore.weatherQuips.collection.rainy) {
+          quipDataPath.quipDataForCurrently.quipArray.push(entry);
+        }
+      }
+      if (dataStoreDayLocation.currently.cloudCover > 0.8) {
+        for (let entry of this.dataStore.weatherQuips.collection.cloudy) {
+          quipDataPath.quipDataForCurrently.quipArray.push(entry);
+        }
+      }
+      if (dataStoreDayLocation.currently.windSpeed > 7) {
+        for (let entry of this.dataStore.weatherQuips.collection.windy) {
+          quipDataPath.quipDataForCurrently.quipArray.push(entry);
+        }
+      }
+      this.determineRandomNumber(
+        city,
+        dataStoreDayLocation,
+        quipDataPath,
+        quipDataPath.quipDataForCurrently
+      );
+      this.randomQuip =
+        quipDataPath.quipDataForCurrently.quipArray[
+          quipDataPath.quipDataForCurrently.randomNumber
+        ];
+      quipDataPath.quipDataForCurrently.quip = this.randomQuip;
+
+      // get quips for forcast
       for (let i = 0; i < 3; i++) {
         const currentQuipDataPath = quipDataPath[i];
         for (let entry of this.dataStore.weatherQuips.collection.general) {
@@ -128,6 +170,8 @@ export default {
         currentQuipDataPath.quipArray = [];
         currentQuipDataPath.quipArrayLength = 0;
       }
+      quipDataPath.quipDataForCurrently.quipArray = [];
+      quipDataPath.quipDataForCurrently.quipArrayLength = 0;
     },
 
     determineRandomNumber(
