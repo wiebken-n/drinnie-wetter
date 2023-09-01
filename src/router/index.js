@@ -2,12 +2,18 @@ import { createRouter, createWebHistory } from "vue-router";
 import WeatherView from "@/views/WeatherView.vue";
 import WeatherTomorrowView from "@/views/WeatherTomorrowView.vue";
 import WeatherDayAfterTomorrowView from "@/views/WeatherDayAfterTomorrowView.vue";
+import WeatherTodayView from "@/views/WeatherTodayView.vue";
 
 const routes = [
   {
     path: "/",
-    name: "weatherToday",
+    name: "weatherCurrently",
     component: WeatherView,
+  },
+  {
+    path: "/today",
+    name: "weatherToday",
+    component: WeatherTodayView,
   },
   {
     path: "/tomorrow",

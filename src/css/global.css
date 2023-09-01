@@ -1,3 +1,4 @@
+/* ------------- custom properties ---------- */
 :root {
   --clr-font: #576b66;
   --clr-font-header: #f8efe6;
@@ -50,6 +51,7 @@
       brightness(70%) contrast(95%); */
 }
 
+/* -------------- general styling ---------------------- */
 *,
 ::before,
 ::after {
@@ -101,4 +103,55 @@ button:active {
   :root {
     font-size: 17px;
   }
+}
+
+/* ----------- styling for weather data components ---------- */
+
+.show-weather__wrapper {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.weather-data__wrapper {
+  width: 100%;
+  margin-inline: auto;
+}
+.weather-data__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: auto;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+.current-weather__icon {
+  width: 7.5rem;
+  height: 7.5rem;
+  filter: var(--clr-svg);
+}
+.temperature {
+  font-size: 2.125rem;
+  margin: 1rem;
+}
+.temp-min-text {
+  font-size: 1.3rem;
+}
+.rain,
+.wind {
+  font-size: 1.15rem;
+}
+.quip-text {
+  font-weight: 500;
+  padding-top: 2.5rem;
+  margin: auto;
+  text-align: center;
+  width: 100%;
+  font-size: 2.125rem;
+}
+.date {
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0;
+  margin-block: 3rem 0;
 }

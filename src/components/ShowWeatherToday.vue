@@ -9,22 +9,33 @@
           class="current-weather__icon"
           :src="
             require('@/assets/icons/' +
-              this.dataStore.currentCityWeatherData.currently.icon +
+              this.dataStore.currentCityWeatherData.daily.data[0].icon +
               '.svg')
           "
         />
         <div class="temp-rain__wrapper">
           <h2 class="temperature">
-            {{
-              this.dataStore.roundTemperature(
-                this.dataStore.currentCityWeatherData.currently.temperature
-              )
-            }}°C
+            <span class="temp-max-text"
+              >{{
+                this.dataStore.roundTemperature(
+                  this.dataStore.currentCityWeatherData.daily.data[0]
+                    .temperatureHigh
+                )
+              }}°C
+            </span>
+            <small class="temp-min-text">
+              {{
+                this.dataStore.roundTemperature(
+                  this.dataStore.currentCityWeatherData.daily.data[0]
+                    .temperatureLow
+                )
+              }}°C</small
+            >
           </h2>
           <h2 class="rain">
             {{
               this.dataStore.convertPrecipationProbabilityToPercent(
-                this.dataStore.currentCityWeatherData.currently
+                this.dataStore.currentCityWeatherData.daily.data[0]
                   .precipProbability
               )
             }}
@@ -34,7 +45,7 @@
             Wind:
             {{
               this.dataStore.convertWindToKph(
-                this.dataStore.currentCityWeatherData.currently.windSpeed
+                this.dataStore.currentCityWeatherData.daily.data[0].windSpeed
               )
             }}
             km/h
@@ -45,7 +56,6 @@
         {{ this.dataStore.weatherQuips[0].quip }}
       </h2>
       <h2 v-else class="quip-text">Sofa geht immer.</h2>
-
       <h3 class="date">{{ showDate }}</h3>
     </div>
   </div>
@@ -53,7 +63,7 @@
 <script>
 import { useDataStore } from "@/stores/useDataStore.js";
 export default {
-  name: "ShowWeatherVue",
+  name: "ShowWeatherTomdayVue",
   setup() {
     const dataStore = useDataStore();
     return {
@@ -63,16 +73,14 @@ export default {
   computed: {
     showDate() {
       const currentDateObj = new Date();
-      const currentDateArray = currentDateObj.toString().split(" ");
-      const currentTime = currentDateArray[4].slice(0, 5);
+      const tomorrow = new Date(currentDateObj);
+      tomorrow.setDate(tomorrow.getDate());
       const currentDate =
-        currentDateObj.getDate() +
+        tomorrow.getDate() +
         "." +
-        (currentDateObj.getMonth() + 1) +
+        (tomorrow.getMonth() + 1) +
         "." +
-        currentDateObj.getFullYear() +
-        "  -  " +
-        currentTime;
+        tomorrow.getFullYear();
       return currentDate;
     },
   },
