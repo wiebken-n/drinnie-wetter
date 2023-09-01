@@ -54,7 +54,9 @@ export default {
   computed: {
     showDate() {
       const currentDateObj = new Date();
-      console.log(currentDateObj);
+      // const currentDateString = currentDateObj.toString();
+      const currentDateArray = currentDateObj.toString().split(" ");
+      const currentTime = currentDateArray[4].slice(0, 5);
       const currentDate =
         currentDateObj.getDate() +
         "." +
@@ -62,10 +64,7 @@ export default {
         "." +
         currentDateObj.getFullYear() +
         "  -  " +
-        currentDateObj.getHours() +
-        ":" +
-        currentDateObj.getMinutes();
-
+        currentTime;
       return currentDate;
     },
   },
