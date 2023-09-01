@@ -15,6 +15,12 @@ export const useDataStore = defineStore("state", {
       weatherQuips: {
         currentQuip: "",
         currentArray: [],
+        quipDataForCurrently: {
+          quip: "",
+          quipArray: [],
+          quipArrayLength: 0,
+          randomNumber: 0,
+        },
         0: {
           quip: "",
           quipArray: [],
@@ -51,8 +57,13 @@ export const useDataStore = defineStore("state", {
             "Eiskaffee machen und die indoor-Kühle genießen.",
           ],
           cloudy: ["Perfektes Lesewetter."],
+          windy: ["Sofa, Buch, Windgeräusche - perfekt."],
           snowy: [
             "Machs dir auf dem Sofa gemütlich und genieße das Winterwetter.",
+          ],
+          general: [
+            "Perfektes Sofawetter.",
+            "Zuhause gibt's kein schlechtes Wetter.",
           ],
         },
       },
