@@ -132,7 +132,6 @@ export default {
     },
     adjustCounter() {
       this.counter = this.counter + this.dataStore.counter;
-      console.log(this.counter);
     },
   },
   watch: {
