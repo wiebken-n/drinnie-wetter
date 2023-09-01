@@ -60,7 +60,7 @@ export default {
       counter: 0,
     };
   },
-  async mounted() {
+  async created() {
     if (this.dataStore.counter > 0) {
       await this.adjustCounter();
     }
@@ -77,6 +77,7 @@ export default {
     },
     async selectCity(city) {
       this.dataStore.selectThisCity(city);
+      console.log("city selected");
       await this.dataStore.fetchWeatherData(
         this.dataStore.currentCityLat,
         this.dataStore.currentCityLon
@@ -86,6 +87,7 @@ export default {
     },
 
     filterQuips(city, dataStoreDayLocation, quipDataPath) {
+      console.log("quips are filtered");
       for (let i = 0; i < 3; i++) {
         const currentQuipDataPath = quipDataPath[i];
         for (let entry of this.dataStore.weatherQuips.collection.general) {
@@ -144,6 +146,7 @@ export default {
       currentQuipDataPath.randomNumber = randomInt;
     },
     adjustCounter() {
+      console.log("counter select city adjusted");
       this.counter = this.counter + this.dataStore.counter;
     },
   },
