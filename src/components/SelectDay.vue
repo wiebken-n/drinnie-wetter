@@ -2,24 +2,28 @@
   <div class="nav__wrapper">
     <div class="button__wrapper">
       <button
+        class="btn__day"
         @click="toCurrent"
         :class="{ active: this.dataStore.selectedDay === 'current' }"
       >
         aktuell
       </button>
       <button
+        class="btn__day"
         @click="toToday"
         :class="{ active: this.dataStore.selectedDay === 'today' }"
       >
         heute
       </button>
       <button
+        class="btn__day"
         @click="toTomorrow"
         :class="{ active: this.dataStore.selectedDay === 'tomorrow' }"
       >
         morgen
       </button>
       <button
+        class="btn__day"
         @click="toDayAfterTomorrow"
         :class="{ active: this.dataStore.selectedDay === 'day-after-tomorrow' }"
       >
@@ -82,5 +86,6 @@ button {
 }
 .active {
   background-color: var(--clr-btn-active);
+  box-shadow: 0 0 5px 3px var(--clr-font);
 }
 </style>

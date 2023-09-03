@@ -1,29 +1,29 @@
 /* ------------- custom properties ---------- */
 :root {
-  --clr-font: #576b66;
-  --clr-font-header: #f8efe6;
-  --clr-background: #f7ede2;
-  --clr-background-accent: #84a59d;
-  --clr-nav-background: linear-gradient(#84a59d 80%, #f7ede2 81%);
-  --clr-footer-background: linear-gradient(0deg, #adc0bc 95%, #f7ede2 96%);
-  --clr-input: #faf5f0;
-  --clr-input-active: #faeadb;
-  --clr-btn: #eea390;
-  --clr-btn-hover: #e67a5f;
-  --clr-btn-active: #e4785c;
-  --clr-btn-shadow: #682717;
-  --clr-btn-font: #576b66;
-  --clr-search-results: #5f756f;
-  --clr-search-results-background: #ecc3b9;
-  --clr-search-results-background-hover: #e9a594;
-  --clr-search-results-border: #c0948d;
+  --clr-font: #46615e;
+  --clr-font-header: #fff5f2;
+  --clr-background: #edf7f6;
+  --clr-background-accent: #2a9d8f;
+  --clr-nav-background: linear-gradient(#2a9d8f 80%, #edf7f6 81%);
+  --clr-footer-background: linear-gradient(0deg, #78b3ac 95%, #edf7f6 96%);
+  --clr-input: #edf7f6;
+  --clr-input-active: #edf7f6;
+  --clr-btn: #e76f51;
+  --clr-btn-hover: #f19882;
+  --clr-btn-active: #fa6540;
+  --clr-btn-shadow: #743829;
+  --clr-btn-font: #283c44;
+  --clr-search-results: #46615e;
+  --clr-search-results-background: #d1e7e5;
+  --clr-search-results-background-hover: #b4cfcd;
+  --clr-search-results-border: #6c7c7b;
   --border-radius: 5px;
-  --clr-svg: invert(44%) sepia(10%) saturate(593%) hue-rotate(113deg)
-    brightness(96%) contrast(85%);
-  --clr-svg-git: invert(44%) sepia(10%) saturate(593%) hue-rotate(113deg)
-    brightness(90%) contrast(95%);
-  --clr-svg-git-hover: invert(44%) sepia(10%) saturate(593%) hue-rotate(113deg)
-    brightness(70%) contrast(95%);
+  --clr-svg: invert(33%) sepia(34%) saturate(316%) hue-rotate(124deg)
+    brightness(93%) contrast(83%);
+  --clr-svg-git: invert(33%) sepia(34%) saturate(316%) hue-rotate(124deg)
+    brightness(90%) contrast(83%);
+  --clr-svg-git-hover: invert(33%) sepia(34%) saturate(316%) hue-rotate(124deg)
+    brightness(70%) contrast(83%);
 
   /* --clr-font: #576b66;
     --clr-font-header: #f8efe6;
@@ -49,6 +49,31 @@
       brightness(90%) contrast(95%);
     --clr-svg-git-hover: invert(44%) sepia(10%) saturate(593%) hue-rotate(113deg)
       brightness(70%) contrast(95%); */
+
+  /* --clr-font: #576b66;
+  --clr-font-header: #f8efe6;
+  --clr-background: #f7ede2;
+  --clr-background-accent: #84a59d;
+  --clr-nav-background: linear-gradient(#84a59d 80%, #f7ede2 81%);
+  --clr-footer-background: linear-gradient(0deg, #adc0bc 95%, #f7ede2 96%);
+  --clr-input: #faf5f0;
+  --clr-input-active: #faeadb;
+  --clr-btn: #eea390;
+  --clr-btn-hover: #e67a5f;
+  --clr-btn-active: #e4785c;
+  --clr-btn-shadow: #682717;
+  --clr-btn-font: #576b66;
+  --clr-search-results: #5f756f;
+  --clr-search-results-background: #ecc3b9;
+  --clr-search-results-background-hover: #e9a594;
+  --clr-search-results-border: #c0948d;
+  --border-radius: 5px;
+  --clr-svg: invert(44%) sepia(10%) saturate(593%) hue-rotate(113deg)
+    brightness(96%) contrast(85%);
+  --clr-svg-git: invert(44%) sepia(10%) saturate(593%) hue-rotate(113deg)
+    brightness(90%) contrast(95%);
+  --clr-svg-git-hover: invert(44%) sepia(10%) saturate(593%) hue-rotate(113deg)
+    brightness(70%) contrast(95%); */
 }
 
 /* -------------- general styling ---------------------- */
@@ -99,12 +124,6 @@ button:active {
   box-shadow: 0 0 4px 1px var(--clr-btn-shadow);
 }
 
-@media screen and (min-width: 500px) {
-  :root {
-    font-size: 17px;
-  }
-}
-
 /* ----------- styling for weather data components ---------- */
 
 .show-weather__wrapper {
@@ -115,6 +134,10 @@ button:active {
 .weather-data__wrapper {
   width: 100%;
   margin-inline: auto;
+  padding: 1.25rem 1.5rem 2.5rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 2px var(--clr-search-results-background-hover);
+  background-color: var(--clr-search-results-background);
 }
 .weather-data__container {
   display: flex;
@@ -154,4 +177,27 @@ button:active {
   text-align: center;
   padding: 0;
   margin-block: 3rem 0;
+}
+
+/* ------------ styling for views ------------ */
+.app-content__wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.weater-data__wrapper {
+  width: 99%;
+  max-width: 900px;
+  padding-top: 9vh;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  margin: auto;
+}
+
+@media screen and (min-width: 500px) {
+  :root {
+    font-size: 17px;
+  }
 }
