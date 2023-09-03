@@ -1,4 +1,4 @@
-# drinnie-wetter
+# Drinnie Wetter
 
 ## Project setup
 

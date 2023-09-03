@@ -28,21 +28,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.app-content__wrapper {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.weater-data__wrapper {
-  width: 80%;
-  max-width: 800px;
-  padding-top: 9vh;
-  display: flex;
-  justify-content: center;
-  flex-grow: 1;
-  margin: auto;
-}
-</style>
